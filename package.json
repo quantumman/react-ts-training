@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --progress --content-base public/  --colors -hot -linline --port 8080"
+    "dev": "./node_modules/.bin/webpack-dev-server --progress --content-base public/  --colors --hot -inline --port 8080"
   },
   "dependencies": {
     "flux": "^2.0.1",
