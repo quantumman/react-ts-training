@@ -1,0 +1,23 @@
+{
+  "name": "react-tutorial-ts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "./node_modules/.bin/webpack-dev-server --progress --content-base public/  --colors -hot -linline --port 8080"
+  },
+  "dependencies": {
+    "flux": "^2.0.1",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.10.1",
+    "file-loader": "^0.8.1",
+    "less": "^2.5.0",
+    "less-loader": "^2.2.0",
+    "style-loader": "^0.10.2",
+    "ts-jsx-loader": "^0.2.0",
+    "ts-loader": "^0.4.2",
+    "webpack": "^1.9.7",
+    "webpack-dev-server": "^1.8.2"
+  }
+}
