@@ -4,12 +4,18 @@
 import React = require('react/addons')
 import Comment = require('./Comment')
 
-class CommentList extends React.Component<{}, {}> {
+class CommentList extends React.Component<{data: {author: string, text: string}[]}, void> {
     render() {
+        var commentNodes = this.props.data.map(function (comment) {
+                 return React.jsx(`
+                        <Comment author={comment.author}>
+                                  {comment.text}
+                        </Comment>
+                `)
+        })
         return React.jsx(`
                 <div className="commnetList">
-                        <Comment author="Pete Hunt">This is one comment</Comment>
-                        <Comment author="Jordan Walke">This is *author* comment</Comment>
+                         {commentNodes}
                 </div>
         `)
     }
