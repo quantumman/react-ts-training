@@ -5,9 +5,11 @@ import React = require('react/addons')
 class CommentForm extends React.Component<{}, void> {
     render(): React.ReactElement<{}> {
         return React.jsx(`
-                <div className="commentForm">
-                        Hello, world! I am a CommentForm.
-                </div>
+                <form className="commentForm">
+                        <input type="text" placeholder="Your name" />
+                        <input type="text" placeholder="Say something..." />
+                        <input type="submit" value="Post" />
+                </form>
         `);
     }
 }
