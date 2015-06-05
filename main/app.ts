@@ -5,13 +5,13 @@ import $ = require('jquery')
 import CommentList = require('./CommentList')
 import CommentForm = require('./CommentForm')
 
-class CommentBox extends React.Component<{url: string}, {data: {author: string, text: string}[]}> {
-    constructor(props: {url: string}) {
+class CommentBox extends React.Component<{url: string, pollInterval: number}, {data: {author: string, text: string}[]}> {
+    constructor(props: {url: string, pollInterval: number}) {
         super(props)
         this.state = {data: [{author: "foobar", text: "hoge"}]}
     }
 
-    componentDidMount() {
+    loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -25,6 +25,11 @@ class CommentBox extends React.Component<{url: string}, {data: {author: string, 
         });
     }
 
+    componentDidMount() {
+        this.loadCommentsFromServer();
+        setInterval(() => this.loadCommentsFromServer(), this.props.pollInterval);
+    }
+
     render() {
         return React.jsx(`
                 <div className="commentBox">
@@ -36,6 +41,7 @@ class CommentBox extends React.Component<{url: string}, {data: {author: string, 
     }
 }
 React.render(
-    React.createElement(CommentBox, {url: 'comments.json'}),
+    React.createElement(CommentBox, {url: 'comments.json', pollInterval: 2000}),
     document.getElementById('content')
+
 )
