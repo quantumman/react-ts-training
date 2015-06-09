@@ -25,8 +25,19 @@ class CommentBox extends React.Component<{url: string, pollInterval: number}, {d
         });
     }
 
-    handleCommentSubmit() {
-        // TODO: submit to the server and refresh the list
+    handleCommentSubmit(comment: {author: string, text: string}) {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            type: 'POST',
+            data: comment,
+            success: data => {
+                this.setState({data: data})
+            },
+            error: (xhr, status, err) => {
+                console.error(this.props.url, status, err.toString())
+            }
+        })
     }
 
     componentDidMount() {
