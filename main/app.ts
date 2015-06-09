@@ -26,6 +26,9 @@ class CommentBox extends React.Component<{url: string, pollInterval: number}, {d
     }
 
     handleCommentSubmit(comment: {author: string, text: string}) {
+        var comments = this.state.data
+        var newComments = comments.concat([comment])
+        this.setState({data: newComments})
         $.ajax({
             url: this.props.url,
             dataType: 'json',
