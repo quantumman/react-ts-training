@@ -25,6 +25,10 @@ class CommentBox extends React.Component<{url: string, pollInterval: number}, {d
         });
     }
 
+    handleCommentSubmit() {
+        // TODO: submit to the server and refresh the list
+    }
+
     componentDidMount() {
         this.loadCommentsFromServer();
         setInterval(() => this.loadCommentsFromServer(), this.props.pollInterval);
@@ -35,7 +39,7 @@ class CommentBox extends React.Component<{url: string, pollInterval: number}, {d
                 <div className="commentBox">
                         <h1>Comments</h1>
                         <CommentList data={this.state.data} />
-                        <CommentForm />
+                        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
                 </div>
         `)
     }

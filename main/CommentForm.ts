@@ -2,7 +2,7 @@
 
 import React = require('react/addons')
 
-class CommentForm extends React.Component<{}, void> {
+class CommentForm extends React.Component<{onCommentSubmit: any}, void> {
     handleSubmit(event) {
         event.preventDefault()
         var author = React.findDOMNode(this.refs["author"])["value"].trim()
@@ -10,7 +10,7 @@ class CommentForm extends React.Component<{}, void> {
         if (!text || !author) {
             return;
         }
-        // TODO: send request to the server
+        this.props.onCommentSubmit({author: author, text: text})
         React.findDOMNode(this.refs["author"])["value"] = '';
         React.findDOMNode(this.refs["text"])["value"] = '';
         return;
